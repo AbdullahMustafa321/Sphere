@@ -16,7 +16,7 @@ class SphereApp extends StatelessWidget {
       designSize: const Size(360,690),
       builder: (_,context){
         return GetMaterialApp(
-          theme: ThemeData(
+          theme: ThemeData().copyWith(
             brightness: Brightness.dark,
             scaffoldBackgroundColor: kBackGroundColor,
           ),
