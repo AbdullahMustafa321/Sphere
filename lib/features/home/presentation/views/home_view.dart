@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,6 +7,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeViewBody();
+    return  Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 18.w,vertical: 10.h),
+        child: const HomeViewBody(),
+      ),
+    );
   }
 }
