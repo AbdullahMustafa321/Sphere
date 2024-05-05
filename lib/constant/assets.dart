@@ -1,4 +1,4 @@
 class AssetsData{
-  static const gifLogo = 'assets/images/Sphere.gif';
-  static const logo = 'assets/images/Sphere.png';
+  static const kGifLogo = 'assets/images/Sphere.gif';
+  static const kLogo = 'assets/images/Sphere.png';
 }
