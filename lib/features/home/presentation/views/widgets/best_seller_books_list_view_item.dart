@@ -25,10 +25,12 @@ class BestSellerBooksListViewItem extends StatelessWidget {
            crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('The Jungle Book',style: Styles.titleMedium,maxLines: 2,overflow: TextOverflow.ellipsis,),
+            SizedBox(height: 7.h,),
             Text('J.K RowLing',style: Styles.titleSmall,),
+            SizedBox(height: 7.h,),
             Row(
               children: [
-                Text('19.99\$',style: Styles.titleMedium,),
+                Text('19.99 \$',style: Styles.titleMedium,),
                 SizedBox(width: 20.w,),
                 Icon(FontAwesomeIcons.solidStar,color: Colors.yellow,size: 14.sp,),
                 Text(' 4.8'),
