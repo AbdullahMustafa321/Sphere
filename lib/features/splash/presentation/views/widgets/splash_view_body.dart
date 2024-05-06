@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sphere_book/features/home/presentation/views/home_view.dart';
-import '../../../../../constant/assets.dart';
+import '../../../../../core/utils/assets.dart';
 import '../../../../../constant/constant.dart';
 
 class SplashViewBody extends StatefulWidget {

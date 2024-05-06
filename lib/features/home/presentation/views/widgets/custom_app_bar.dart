@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sphere_book/constant/assets.dart';
+import 'package:sphere_book/core/utils/assets.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({super.key});
