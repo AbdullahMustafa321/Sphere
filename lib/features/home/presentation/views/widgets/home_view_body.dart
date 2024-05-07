@@ -22,11 +22,11 @@ class HomeViewBody extends StatelessWidget {
         ),
         const FeaturedBooksListView(),
         SizedBox(
-          height: 15.h,
+          height: 25.h,
         ),
         Text(
           "Best Seller",
-          style: Styles.titleMedium,
+          style: Styles.semiBoldTextStyle18,
         ),
         const Expanded(child: BestSellerBooksListView())
       ],
