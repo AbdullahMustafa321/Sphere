@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/best_seller_books_list_view.dart';
 
+import '../../../../../constant/constant.dart';
 import 'custom_app_bar.dart';
 import 'featured_books_list_view.dart';
 
@@ -13,22 +14,37 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const CustomAppBar(),
-        SizedBox(
-          height: 18.h,
+    return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: kMainPadding.w),
+                child: const CustomAppBar(),
+              ),
+              SizedBox(
+                height: 18.h,
+              ),
+              const FeaturedBooksListView(),
+              SizedBox(
+                height: 25.h,
+              ),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: kMainPadding.w),
+                child: Text(
+                  "Best Seller",
+                  style: Styles.semiBoldTextStyle18,
+                ),
+              ),
+            ],
+          ),
         ),
-        const FeaturedBooksListView(),
-        SizedBox(
-          height: 25.h,
-        ),
-        Text(
-          "Best Seller",
-          style: Styles.semiBoldTextStyle18,
-        ),
-        const Expanded(child: BestSellerBooksListView())
+        const SliverFillRemaining(
+          child: BestSellerBooksListView(),
+        )
       ],
     );
   }
