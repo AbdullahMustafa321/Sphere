@@ -7,11 +7,12 @@ import '../../../../../constant/constant.dart';
 import '../../../../../core/utils/styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
-
+  const BookRating({super.key,  this.mainAxisAlignment=MainAxisAlignment.center});
+final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment:mainAxisAlignment ,
       children: [
         Icon(
           FontAwesomeIcons.solidStar,

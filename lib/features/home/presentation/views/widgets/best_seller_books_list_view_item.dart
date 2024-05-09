@@ -30,7 +30,7 @@ class BestSellerBooksListViewItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.r),
                     image: const DecorationImage(
                         image: NetworkImage(
-                            'https://diybookcovers.com/wp-content/uploads/2023/07/scifi5thumb.jpg'),
+                            'https://m.media-amazon.com/images/I/81q77Q39nEL._AC_UF1000,1000_QL80_.jpg'),
                         fit: BoxFit.fill)),
               ),
             ),

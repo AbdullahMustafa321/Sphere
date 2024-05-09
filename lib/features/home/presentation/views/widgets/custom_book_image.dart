@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FeaturedListViewItem extends StatelessWidget {
-  const FeaturedListViewItem({super.key});
+class CustomBookImage extends StatelessWidget {
+  const CustomBookImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class FeaturedListViewItem extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.r),
             image: const DecorationImage(
-                image: NetworkImage('https://diybookcovers.com/wp-content/uploads/2023/07/scifi5thumb.jpg'),
+                image: NetworkImage('https://m.media-amazon.com/images/I/81q77Q39nEL._AC_UF1000,1000_QL80_.jpg'),
                 fit: BoxFit.fill)),
       ),
     );
