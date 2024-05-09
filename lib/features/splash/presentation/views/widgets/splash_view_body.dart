@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:sphere_book/features/home/presentation/views/home_view.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sphere_book/core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
-import '../../../../../constant/constant.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -60,8 +59,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigate() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const HomeView(),
-          transition: Transition.fade, duration: kTranstionDurations);
+      GoRouter.of(context).push(AppRouter.kHomeView);
     });
   }
 
