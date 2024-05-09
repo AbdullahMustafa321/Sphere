@@ -8,8 +8,8 @@ import 'package:sphere_book/core/utils/app_router.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/book_rating.dart';
 
-class BestSellerBooksListViewItem extends StatelessWidget {
-  const BestSellerBooksListViewItem({super.key});
+class BookListViewItem extends StatelessWidget {
+  const BookListViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {

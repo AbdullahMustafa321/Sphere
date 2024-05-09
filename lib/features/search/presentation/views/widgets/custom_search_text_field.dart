@@ -21,10 +21,13 @@ class CustomSearchTextField extends StatelessWidget {
               hintText: 'Search',
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
-              suffixIcon:  Icon(
-                size: 20.sp,
-                FontAwesomeIcons.magnifyingGlass,
-                color: Colors.grey,
+              prefixIcon:  Opacity(
+                opacity: 0.8,
+                child: Icon(
+                  size: 18.sp,
+                  FontAwesomeIcons.magnifyingGlass,
+                  color: Colors.grey,
+                ),
               )),
         ),
       ),

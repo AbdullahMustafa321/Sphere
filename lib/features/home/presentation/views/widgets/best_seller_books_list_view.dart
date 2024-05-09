@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/constant/constant.dart';
-import 'package:sphere_book/features/home/presentation/views/widgets/best_seller_books_list_view_item.dart';
+import 'package:sphere_book/features/home/presentation/views/widgets/book_list_view_item.dart';
 
 class BestSellerBooksListView extends StatelessWidget {
   const BestSellerBooksListView({super.key});
@@ -15,7 +15,7 @@ class BestSellerBooksListView extends StatelessWidget {
         itemBuilder: (context,index){
       return Padding(
         padding: EdgeInsets.symmetric(vertical: kMainPadding.h,horizontal: kMainPadding.w),
-        child: const BestSellerBooksListViewItem(),
+        child: const BookListViewItem(),
       );
     });
   }

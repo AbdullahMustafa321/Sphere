@@ -10,15 +10,13 @@ class SimilarBooksSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.only(left: 20.w),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'You can also like',
-              style: Styles.semiBoldTextStyle14,
-            ),
+          child: Text(
+            'You can also like',
+            style: Styles.semiBoldTextStyle14,
           ),
         ),
         SizedBox(height: 10.h),
