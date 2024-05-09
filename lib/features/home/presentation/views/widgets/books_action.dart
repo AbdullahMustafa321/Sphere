@@ -28,7 +28,7 @@ class BooksAction extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
-              backGroundColor: Color(0xffEF8262),
+              backGroundColor: const Color(0xffEF8262),
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20.r),
                   bottomRight: Radius.circular(20.r)),
