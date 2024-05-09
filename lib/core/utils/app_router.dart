@@ -1,11 +1,13 @@
 import 'package:go_router/go_router.dart';
 import 'package:sphere_book/features/home/presentation/views/book_details_view.dart';
 import 'package:sphere_book/features/home/presentation/views/home_view.dart';
+import 'package:sphere_book/features/search/presentation/views/search_view.dart';
 import 'package:sphere_book/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
   static String kHomeView='/HomeView';
   static String kBookDetailsView='/BookDetailsView';
+  static String kSearchView='/SearchView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -19,6 +21,10 @@ abstract class AppRouter {
       GoRoute(
         path: kBookDetailsView,
         builder: (context, state) => const BookDetailsView(),
+      ),
+      GoRoute(
+        path: kSearchView,
+        builder: (context, state) => const SearchView(),
       ),
     ],
   );
