@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sphere_book/core/utils/assets.dart';
 
-class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({super.key});
+class CustomHomeAppBar extends StatefulWidget {
+  const CustomHomeAppBar({super.key});
 
   @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
+  State<CustomHomeAppBar> createState() => _CustomHomeAppBarState();
 }
 
-class _CustomAppBarState extends State<CustomAppBar> {
+class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
   bool isClick=false;
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/best_seller_books_list_view.dart';
 
 import '../../../../../constant/constant.dart';
-import 'custom_app_bar.dart';
+import 'custom_home_app_bar.dart';
 import 'featured_books_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -23,7 +23,7 @@ class HomeViewBody extends StatelessWidget {
             children: [
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal: kMainPadding.w),
-                child: const CustomAppBar(),
+                child: const CustomHomeAppBar(),
               ),
               SizedBox(
                 height: 18.h,
