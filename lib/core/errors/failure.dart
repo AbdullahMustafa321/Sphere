@@ -1,50 +1,49 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 abstract class Failure{
   final String errMessage;
 
-  Failure(this.errMessage);
+ const Failure(this.errMessage);
 }
-class SereverFailure extends Failure{
-  SereverFailure(super.errMessage);
+class ServerFailure extends Failure{
+  const ServerFailure(super.errMessage);
 
-  factory SereverFailure.fromDioException(DioException dioException){
+  factory ServerFailure.fromDioException(DioException dioException){
     switch (dioException.type){
 
       case DioExceptionType.connectionTimeout:
-        return SereverFailure('Connection timeout with ApiServer');
+        return const ServerFailure('Connection timeout with ApiServer');
       case DioExceptionType.sendTimeout:
-        return SereverFailure('Send timeout with ApiServer');
+        return const ServerFailure('Send timeout with ApiServer');
       case DioExceptionType.receiveTimeout:
-        return SereverFailure('Receive timeout with ApiServer');
+        return const ServerFailure('Receive timeout with ApiServer');
       case DioExceptionType.badCertificate:
-        return SereverFailure('BadCertificate timeout with ApiServer');
+        return const ServerFailure('BadCertificate timeout with ApiServer');
       case DioExceptionType.badResponse:
-        return SereverFailure.fromResponse(dioException.response!.statusCode, dioException.response!.data);
+        return ServerFailure.fromResponse(dioException.response!.statusCode, dioException.response!.data);
       case DioExceptionType.cancel:
-      return SereverFailure('Cancel timeout with ApiServer');
+      return const ServerFailure('Cancel timeout with ApiServer');
       case DioExceptionType.connectionError:
-        return SereverFailure('connectionError');
+        return const ServerFailure('connectionError');
       case DioExceptionType.unknown:
         if(dioException.message!.contains('SocketException')){
-          return SereverFailure('No internet Connection');
+          return const ServerFailure('No internet Connection');
         }else{
-          return SereverFailure('Unexpected error, Please try again later.');
+          return const ServerFailure('Unexpected error, Please try again later.');
         }
       default:
-        return SereverFailure('Opss There was an error, please try again later');
+        return const ServerFailure('Opss There was an error, please try again later');
     }
   }
-  factory SereverFailure.fromResponse(int? statusCode , dynamic response){
+  factory ServerFailure.fromResponse(int? statusCode , dynamic response){
     if(statusCode== 400||statusCode== 401||statusCode== 403 ){
-      return SereverFailure(response['error']['message']);
+      return ServerFailure(response['error']['message']);
     }else if(statusCode==404){
-      return SereverFailure('Not Found');
+      return const ServerFailure('Not Found');
     }else if(statusCode==500){
-      return SereverFailure('Internal Server Error');
+      return const ServerFailure('Internal Server Error');
     }else{
-      return SereverFailure('Opss There was an error, please try again later');
+      return const ServerFailure('Opss There was an error, please try again later');
     }
   }
 }
