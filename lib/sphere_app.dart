@@ -22,7 +22,7 @@ class SphereApp extends StatelessWidget {
       builder: (_,context){
         return MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context)=>FeaturedBooksCubit(getIt.get<HomeRepoImpl>())),
+            BlocProvider(create: (context)=>FeaturedBooksCubit(getIt.get<HomeRepoImpl>())..fetchFeaturedBooks()),
             BlocProvider(create: (context)=>NewestBookCubit(getIt.get<HomeRepoImpl>()))
           ],
           child: MaterialApp.router(
