@@ -4,8 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/best_seller_books_list_view.dart';
-
-import '../../../../../constant/constant.dart';
+import '../../../../../core/constant/constant.dart';
 import 'custom_home_app_bar.dart';
 import 'featured_books_list_view.dart';
 

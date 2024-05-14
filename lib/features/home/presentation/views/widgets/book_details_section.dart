@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../constant/constant.dart';
+import '../../../../../core/constant/constant.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 import 'custom_book_image.dart';

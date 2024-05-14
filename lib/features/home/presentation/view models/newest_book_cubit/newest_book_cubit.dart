@@ -4,18 +4,18 @@ import 'package:sphere_book/features/home/data/repos/home_repo.dart';
 
 import '../../../data/models/book_model.dart';
 
-part 'newest_state.dart';
+part 'newest_book_state.dart';
 
-class NewsetCubit extends Cubit<NewestState> {
-  NewsetCubit(this.homeRepo) : super(NewestInitialState());
+class NewestBookCubit extends Cubit<NewestState> {
+  NewestBookCubit(this.homeRepo) : super(NewestBookInitialState());
   final HomeRepo homeRepo;
   Future<void> fetchNewestBook()async{
-    emit(NewestLoadingState());
+    emit(NewestBookLoadingState());
     var result = await homeRepo.fetchNewestBooks();
     return result.fold((failure) {
-      emit(NewestFailureState(failure.errMessage));
+      emit(NewestBookFailureState(failure.errMessage));
     }, (books){
-      emit(NewestSuccessState(books));
+      emit(NewestBookSuccessState(books));
     });
   }
 }

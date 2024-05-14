@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sphere_book/constant/constant.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/book_list_view_item.dart';
+
+import '../../../../../core/constant/constant.dart';
 
 class BestSellerBooksListView extends StatelessWidget {
   const BestSellerBooksListView({super.key});

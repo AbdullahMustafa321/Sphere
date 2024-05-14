@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sphere_book/constant/constant.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/features/search/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:sphere_book/features/search/presentation/views/widgets/search_result_list_view.dart';
+
+import '../../../../../core/constant/constant.dart';
 
 
 class SearchViewBody extends StatelessWidget {
