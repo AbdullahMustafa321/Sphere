@@ -5,9 +5,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../core/constant/constant.dart';
 import '../../../../../core/utils/styles.dart';
 
-class BookRating extends StatelessWidget {
-  const BookRating({super.key,  this.mainAxisAlignment=MainAxisAlignment.center});
+class ProductRating extends StatelessWidget {
+  const ProductRating({super.key,  this.mainAxisAlignment=MainAxisAlignment.center, required this.rating});
 final MainAxisAlignment mainAxisAlignment;
+final String rating;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,14 +20,9 @@ final MainAxisAlignment mainAxisAlignment;
           size: 14.sp,
         ),
         Text(
-          ' 4.8',
+          ' $rating',
           style: Styles.mediumTextStyle16,
         ),
-        Text(
-          '  (2390)',
-          style: Styles.regularTextStyle14
-              .copyWith(color: kSubTitlesColor),
-        )
       ],
     );
   }

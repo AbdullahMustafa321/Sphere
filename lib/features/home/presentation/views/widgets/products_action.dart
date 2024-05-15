@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sphere_book/features/home/data/models/product_model.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 
-class BooksAction extends StatelessWidget {
-  const BooksAction({
-    super.key,
+class ProductsAction extends StatelessWidget {
+  const ProductsAction({
+    super.key, required this.product,
   });
-
+final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +21,7 @@ class BooksAction extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.r),
                   bottomLeft: Radius.circular(20.r)),
-              text: '19.99 \$',
+              text: '${product.price} \$',
               textColor: Colors.black,
             ),
           ),
@@ -30,7 +31,7 @@ class BooksAction extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20.r),
                   bottomRight: Radius.circular(20.r)),
-              text: 'Free preview',
+              text: 'Add to Cart',
               textColor: Colors.white,
               fontSize: 16.sp,
             ),

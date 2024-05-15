@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-class CustomBookDetailsAppBar extends StatelessWidget {
-  const CustomBookDetailsAppBar({super.key});
+class CustomProductDetailsAppBar extends StatelessWidget {
+  const CustomProductDetailsAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sphere_book/features/home/presentation/views/widgets/custom_image.dart';
 import '../../../../../core/constant/constant.dart';
 import '../../../../../core/utils/styles.dart';
-import 'book_rating.dart';
-import 'custom_book_image.dart';
+import '../../../data/models/product_model.dart';
+import 'product_rating.dart';
 
-class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
-
+class ProductDetailsSection extends StatelessWidget {
+  const ProductDetailsSection({super.key, required this.product});
+final ProductModel product;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -16,25 +17,25 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(
               horizontal: width * 0.24, vertical: 5.h),
-          child: const CustomBookImage( image: 'http://books.google.com/books/content?id=0sNdAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'),
+          child:  CustomImage(image: product.image,),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Text(
-            'Harry Potter',
+            product.title,
             style: Styles.regularTextStyle30
                 .copyWith(fontFamily: kGtSectraFine),
           ),
         ),
         Text(
-          'J.K RowLing',
+          product.description,
           style: Styles.mediumTextStyle18.copyWith(
               color: kSubTitlesColor, fontStyle: FontStyle.italic),
         ),
         SizedBox(
           height: 15.h,
         ),
-        const BookRating(),
+         ProductRating(rating: product.ratingsAverage.toString(),),
         SizedBox(height: 15.h),
       ],
     );

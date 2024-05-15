@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sphere_book/features/home/presentation/view%20models/featured_books_cubit/featured_books_cubit.dart';
 
-import 'custom_book_image.dart';
+import '../../view models/get_all_categories_cubit/get_all_categories_cubit.dart';
+import 'custom_category_item.dart';
 
-class FeaturedBooksListView extends StatelessWidget {
-  const FeaturedBooksListView({
+class AllCategoriesListView extends StatelessWidget {
+  const AllCategoriesListView({
     super.key,
   });
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
+    return BlocBuilder<GetAllCategoriesCubit, GetAllCategoriesState>(
       builder: (context, state) {
-        if (state is FeaturedBooksSuccessState) {
+        if (state is GetAllCategoriesSuccessState) {
           return SizedBox(
             height: 224.w,
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
-                itemCount: state.books.length,
+                itemCount: state.category.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.only(right: 8.w),
-                    child:  CustomBookImage(image:state.books[index].volumeInfo.imageLinks.thumbnail),
+                    child:  CustomCategoryItem(category:state.category[index],),
                   );
                 },
             ),
           );
-        }else if (state is FeaturedBooksFailureState){
+        }
+        else if (state is GetAllCategoriesFailureState){
           return Text(state.errorMessage);
-        }else{
+        }
+        else{
           return const Center(child: CircularProgressIndicator());
         }
       },

@@ -22,8 +22,8 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
           Image.asset(AssetsData.kLogo,height: 60.h,),
           const Spacer(),
            IconButton(onPressed: () {
-             GoRouter.of(context).push(AppRouter.kSearchView);
-           }, icon: const Icon(FontAwesomeIcons.magnifyingGlass),)
+             GoRouter.of(context).pop();
+           }, icon: const Icon(FontAwesomeIcons.arrowRightFromBracket),)
         ],
       ),
     );

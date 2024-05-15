@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/core/utils/styles.dart';
-import 'package:sphere_book/features/home/presentation/views/widgets/best_seller_books_list_view.dart';
+import 'package:sphere_book/features/home/presentation/views/widgets/all_product_list_view.dart';
 import '../../../../../core/constant/constant.dart';
 import 'custom_home_app_bar.dart';
-import 'featured_books_list_view.dart';
+import 'all_categories_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -24,17 +24,25 @@ class HomeViewBody extends StatelessWidget {
                 padding:  EdgeInsets.symmetric(horizontal: kMainPadding.w),
                 child: const CustomHomeAppBar(),
               ),
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: kMainPadding.w),
+                child: Text(
+                  "Categories",
+                  style: Styles.semiBoldTextStyle18,
+                ),
+              ),
+
               SizedBox(
                 height: 10.h,
               ),
-              const FeaturedBooksListView(),
+              const AllCategoriesListView(),
               SizedBox(
                 height: 25.h,
               ),
               Padding(
                 padding:  EdgeInsets.symmetric(horizontal: kMainPadding.w),
                 child: Text(
-                  "Best Seller",
+                  "Products",
                   style: Styles.semiBoldTextStyle18,
                 ),
               ),
@@ -42,7 +50,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         const SliverFillRemaining(
-          child: BestSellerBooksListView(),
+          child: AllProductListView(),
         )
       ],
     );

@@ -3,9 +3,10 @@ import 'package:dio/dio.dart';
 
 import 'package:sphere_book/core/errors/failure.dart';
 import 'package:sphere_book/core/utils/api_services.dart';
+import 'package:sphere_book/features/home/data/models/categories_model.dart';
 
 
-import '../models/book_model/book_model.dart';
+import '../models/product_model.dart';
 import 'home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
@@ -14,15 +15,15 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiServices);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<CategoryModel>>> getAllCategories() async {
     try {
-      var data = await apiServices.get(
-          'volumes?Filtering=free-ebooks&q=subject:cartoon&sorting=newest');
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+      var data = await apiServices.get('categories');
+      List<CategoryModel> categories = [];
+      for (var item in data['data']) {
+        categories.add(CategoryModel.fromJson(item));
       }
-      return right(books);
+      print(categories);
+      return right(categories);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));
@@ -33,15 +34,15 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-    Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+    Future<Either<Failure, List<ProductModel>>> getAllProducts() async {
     try {
       var data = await apiServices
-          .get('volumes?Filtering=free-ebooks&q=subject:flutter');
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+          .get('products');
+      List<ProductModel> product = [];
+      for (var item in data['data']) {
+        product.add(ProductModel.fromJson(item));
       }
-      return right(books);
+      return right(product);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));

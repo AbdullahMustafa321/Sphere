@@ -7,3 +7,5 @@ Color kSubTitlesColor= Colors.white.withOpacity(0.7);
 const kTranstionDurations = Duration(milliseconds: 250);
 const kGtSectraFine = 'GT Sectra Fine';
 const kMainPadding = 10;
+const kEmailValid = 'email';
+const kPasswordValid = 'password';
