@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:sphere_book/core/errors/failure.dart';
 import 'package:sphere_book/core/utils/api_services.dart';
 
-import 'package:sphere_book/features/home/data/models/book_model.dart';
 
+import '../models/book_model/book_model.dart';
 import 'home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
@@ -36,7 +36,7 @@ class HomeRepoImpl implements HomeRepo {
     Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiServices
-          .get('volumes?Filtering=free-ebooks&q=subject:');
+          .get('volumes?Filtering=free-ebooks&q=subject:flutter');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
