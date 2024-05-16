@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:sphere_book/features/auth/data/models/auth_failure_model.dart';
 import 'package:sphere_book/features/auth/data/models/auth_success_model.dart';
 import 'package:sphere_book/features/auth/data/repos/auth_repo.dart';
 
@@ -12,10 +11,13 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login({required String email, required String password})async{
     emit(LoginLoadingState());
     var result =await authRepo.userLogin(email: email, password: password);
-    return result.fold((fail) {
-      emit(LoginFailureState(fail));
+    return result.fold((failure) {
+      emit(LoginFailureState(failure.errMessage));
+      print(failure.errMessage);
     }, (success) {
       emit(LoginSuccessState(success));
+      print(success.token);
+
     });
   }
 }

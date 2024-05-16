@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sphere_book/core/utils/app_router.dart';
 import 'package:sphere_book/core/utils/assets.dart';
+import 'package:sphere_book/features/home/presentation/views/widgets/custom_cart_icon.dart';
 
 class CustomHomeAppBar extends StatefulWidget {
   const CustomHomeAppBar({super.key});
@@ -21,9 +22,34 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
         children: [
           Image.asset(AssetsData.kLogo,height: 60.h,),
           const Spacer(),
-           IconButton(onPressed: () {
-             GoRouter.of(context).pop();
-           }, icon: const Icon(FontAwesomeIcons.arrowRightFromBracket),)
+          const CustomCartIcon(),
+          IconButton(onPressed: () {
+             showDialog(
+                 context: context,
+                 builder: (context) {
+                   return AlertDialog(
+                     title: const Text(
+                         'Are you sure you want to Logout!'),
+                     actions: [
+                       MaterialButton(
+                         onPressed: () {
+                           GoRouter.of(context).pop();
+                           GoRouter.of(context).pop();
+                         },
+                         child: const Text('YES'),
+                       ),
+                       MaterialButton(
+                         onPressed: () {
+                           Navigator.pop(context);
+                         },
+                         child: const Text('NO'),
+                       )
+                     ],
+                   );
+                 });
+
+
+           }, icon: const Icon(FontAwesomeIcons.arrowRightFromBracket),),
         ],
       ),
     );

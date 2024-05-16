@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:sphere_book/core/errors/failure.dart';
 import 'package:sphere_book/core/utils/api_services.dart';
-import 'package:sphere_book/features/auth/data/models/auth_failure_model.dart';
 import 'package:sphere_book/features/auth/data/models/auth_success_model.dart';
 import 'package:sphere_book/features/auth/data/repos/auth_repo.dart';
 
@@ -11,7 +12,7 @@ class AuthRepoImpl implements AuthRepo{
 
 
   @override
-  Future<Either<AuthFailureModel, AuthSuccessModel>> userRegister({required String email,
+  Future<Either<Failure, AuthSuccessModel>> userRegister({required String email,
     required String password,
     required String rePassword,
     required String phoneNumber,
@@ -25,33 +26,35 @@ class AuthRepoImpl implements AuthRepo{
     };
     try {
       AuthSuccessModel successModel;
-      var respose = await apiServices.post('auth/signin', data);
-      successModel=AuthSuccessModel.fronJson(respose);
+      var response = await apiServices.post('auth/signup', data);
+      successModel=AuthSuccessModel.fromJson(response);
       return right(successModel);
     } catch (e) {
-      AuthFailureModel authFailureModel;
-      var respose = await apiServices.post('auth/signin', data);
-      authFailureModel = AuthFailureModel.fromJson(respose);
-      return left(authFailureModel);
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
     }
   }
 
   @override
-  Future<Either<AuthFailureModel, AuthSuccessModel>> userLogin({required String email, required String password})async {
+  Future<Either<Failure, AuthSuccessModel>> userLogin({required String email, required String password})async {
     Map<String, dynamic> data = {
       'email': email,
       'password': password,
     };
     try {
       AuthSuccessModel successModel;
-      var respose = await apiServices.post('auth/signin', data);
-      successModel=AuthSuccessModel.fronJson(respose);
+      var response = await apiServices.post('auth/signin', data);
+      successModel=AuthSuccessModel.fromJson(response);
       return right(successModel);
     } catch (e) {
-      AuthFailureModel authFailureModel;
-      var respose = await apiServices.post('auth/signin', data);
-      authFailureModel = AuthFailureModel.fromJson(respose);
-      return left(authFailureModel);
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
     }
   }
   }

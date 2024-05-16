@@ -6,9 +6,9 @@ abstract class LoginState {}
 final class LoginInitialState extends LoginState {}
 final class LoginLoadingState extends LoginState {}
 final class LoginFailureState extends LoginState {
-  final AuthFailureModel authFailureModel;
+  final String errorMessage;
 
-  LoginFailureState(this.authFailureModel);
+  LoginFailureState(this.errorMessage);
 }
 final class LoginSuccessState extends LoginState {
   final AuthSuccessModel authSuccessModel;

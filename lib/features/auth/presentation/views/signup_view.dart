@@ -11,28 +11,12 @@ import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/features/auth/presentation/view%20models/register_cubit/register_cubit.dart';
 import 'package:sphere_book/features/auth/presentation/views/widgets/custom_form_text_field_widget.dart';
 
-class SignupView extends StatefulWidget {
+class SignupView extends StatelessWidget {
   static GlobalKey<FormState> formKey = GlobalKey();
-
-  @override
-  State<SignupView> createState() => _SignupViewState();
-}
-
-class _SignupViewState extends State<SignupView> {
+  TextEditingController controller = TextEditingController();
   String? email, password, name, phoneNumber, rePassword;
 
   bool isLoading = false;
-
-  @override
-  void initState() {
-    BlocProvider.of<RegisterCubit>(context).Register(
-        email: email.toString(),
-        password: password.toString(),
-        rePassword: rePassword.toString(),
-        phoneNumber: phoneNumber.toString(),
-        name: name.toString());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +35,7 @@ class _SignupViewState extends State<SignupView> {
               isLoading = false;
             } else if (state is RegisterFailureState) {
               SnackBar(
-                content: Text(state.authFailureModel.message),
+                content: Text(state.errorMessage),
               );
               isLoading = false;
             }
@@ -61,7 +45,7 @@ class _SignupViewState extends State<SignupView> {
               inAsyncCall: isLoading,
               child: Scaffold(
                 body: Form(
-                  key: SignupView.formKey,
+                  key: formKey,
                   child: ListView(children: [
                     Image.asset(
                       AssetsData.kLogo,
@@ -94,6 +78,7 @@ class _SignupViewState extends State<SignupView> {
                       height: 5.h,
                     ),
                     CustomFormTextFieldWidget(
+                      controller: controller,
                       kindOfVaild: kPasswordValid,
                       formKey: FormKey.thirdGlobalKey,
                       onChange: (data) {
@@ -142,7 +127,7 @@ class _SignupViewState extends State<SignupView> {
                               backgroundColor: Colors.red,
                                 content: Text(
                                     'Password confirmation is incorrect')));
-                          } else if (SignupView.formKey.currentState!
+                          } else if (formKey.currentState!
                               .validate()) {
                             BlocProvider.of<RegisterCubit>(context).Register(
                                 email: email.toString(),
@@ -150,6 +135,7 @@ class _SignupViewState extends State<SignupView> {
                                 rePassword: rePassword.toString(),
                                 phoneNumber: phoneNumber.toString(),
                                 name: name.toString());
+                            controller.clear();
                           }
                         },
                         style: ElevatedButton.styleFrom(

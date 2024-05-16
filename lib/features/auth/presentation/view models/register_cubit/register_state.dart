@@ -6,9 +6,9 @@ sealed class RegisterState {}
 final class RegisterInitialState extends RegisterState {}
 final class RegisterLoadingState extends RegisterState {}
 final class RegisterFailureState extends RegisterState {
-  final AuthFailureModel authFailureModel;
+  final String errorMessage;
 
-  RegisterFailureState(this.authFailureModel);
+  RegisterFailureState(this.errorMessage);
 }
 final class RegisterSuccessState extends RegisterState {
   final AuthSuccessModel authSuccessModel;

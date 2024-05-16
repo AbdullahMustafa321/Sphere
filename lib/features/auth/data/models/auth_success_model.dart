@@ -3,7 +3,7 @@ class AuthSuccessModel{
   final String token;
 
   AuthSuccessModel({required this.message, required this.token});
-  factory AuthSuccessModel.fronJson(json){
+  factory AuthSuccessModel.fromJson(json){
     return AuthSuccessModel(message: json['message'], token: json['token']);
   }
 }
