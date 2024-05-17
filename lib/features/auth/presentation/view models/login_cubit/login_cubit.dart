@@ -13,11 +13,8 @@ class LoginCubit extends Cubit<LoginState> {
     var result =await authRepo.userLogin(email: email, password: password);
     return result.fold((failure) {
       emit(LoginFailureState(failure.errMessage));
-      print(failure.errMessage);
     }, (success) {
       emit(LoginSuccessState(success));
-      print(success.token);
-
     });
   }
 }

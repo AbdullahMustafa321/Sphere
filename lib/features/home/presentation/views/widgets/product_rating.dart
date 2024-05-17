@@ -14,14 +14,14 @@ final String rating;
     return Row(
       mainAxisAlignment:mainAxisAlignment ,
       children: [
+        Text(
+          ' $rating ',
+          style: Styles.mediumTextStyle16,
+        ),
         Icon(
           FontAwesomeIcons.solidStar,
           color: Colors.yellow,
           size: 14.sp,
-        ),
-        Text(
-          ' $rating',
-          style: Styles.mediumTextStyle16,
         ),
       ],
     );

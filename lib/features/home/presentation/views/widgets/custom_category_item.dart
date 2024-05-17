@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sphere_book/core/utils/app_router.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/features/home/data/models/categories_model.dart';
+import 'package:sphere_book/features/home/presentation/views/specific_product_view.dart';
 
 class CustomCategoryItem extends StatelessWidget {
   const CustomCategoryItem({super.key, required this.category});
@@ -11,7 +14,7 @@ class CustomCategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SpecificProductsView(categoryId: category.categoryId)));
       },
       child: Stack(
         children:[ClipRRect(

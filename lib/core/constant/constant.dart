@@ -9,3 +9,5 @@ const kGtSectraFine = 'GT Sectra Fine';
 const kMainPadding = 10;
 const kEmailValid = 'email';
 const kPasswordValid = 'password';
+ String kToken='';
+ int kTotalPrice=0;

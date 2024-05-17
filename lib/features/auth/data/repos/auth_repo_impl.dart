@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:sphere_book/core/constant/constant.dart';
 import 'package:sphere_book/core/errors/failure.dart';
 import 'package:sphere_book/core/utils/api_services.dart';
 import 'package:sphere_book/features/auth/data/models/auth_success_model.dart';
@@ -26,7 +27,7 @@ class AuthRepoImpl implements AuthRepo{
     };
     try {
       AuthSuccessModel successModel;
-      var response = await apiServices.post('auth/signup', data);
+      var response = await apiServices.post(endpoints: 'auth/signup', data: data);
       successModel=AuthSuccessModel.fromJson(response);
       return right(successModel);
     } catch (e) {
@@ -46,8 +47,9 @@ class AuthRepoImpl implements AuthRepo{
     };
     try {
       AuthSuccessModel successModel;
-      var response = await apiServices.post('auth/signin', data);
+      var response = await apiServices.post(endpoints: 'auth/signin', data:data);
       successModel=AuthSuccessModel.fromJson(response);
+      kToken = successModel.token;
       return right(successModel);
     } catch (e) {
       if (e is DioException) {

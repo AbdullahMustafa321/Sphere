@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sphere_book/features/home/presentation/views/widgets/categories_loading_widget.dart';
 
 import '../../view models/get_all_categories_cubit/get_all_categories_cubit.dart';
 import 'custom_category_item.dart';
@@ -33,7 +34,7 @@ class AllCategoriesListView extends StatelessWidget {
           return Text(state.errorMessage);
         }
         else{
-          return const Center(child: CircularProgressIndicator());
+          return const CategoriesLoadingWidget();
         }
       },
     );

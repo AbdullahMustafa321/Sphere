@@ -16,4 +16,3 @@ final class GetAllProductsSuccessState extends GetAllProductsState {
 
  const GetAllProductsSuccessState(this.products);
 }
-

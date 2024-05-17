@@ -6,12 +6,24 @@ class ApiServices {
 
   ApiServices( this._dio);
 
-  Future<Map<String,dynamic>> get(String endpoints)async{
+  Future<Map<String,dynamic>> get({required String endpoints, String token=''})async{
+    _dio.options.headers['token']= token;
     Response response = await _dio.get('$_baseUrl$endpoints');
     return response.data;
   }
-  Future<Map<String,dynamic>> post(String endpoints,dynamic data)async{
+  Future<Map<String,dynamic>> post({required String endpoints, dynamic data, String token = ''})async{
+    _dio.options.headers['token']= token;
     Response response = await _dio.post('$_baseUrl$endpoints',data: data);
+    return response.data;
+  }
+  Future<Map<String,dynamic>> put({required String productId,required String endpoints, dynamic data, String token = ''})async{
+    _dio.options.headers['token']= token;
+    Response response = await _dio.put('$_baseUrl$endpoints/$productId',data: data);
+    return response.data;
+  }
+  Future<Map<String,dynamic>> delete({required String productId,required String endpoints, String token = ''})async{
+    _dio.options.headers['token']= token;
+    Response response = await _dio.delete('$_baseUrl$endpoints/$productId');
     return response.data;
   }
 }

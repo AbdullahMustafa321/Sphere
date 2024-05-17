@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/custom_image.dart';
 import '../../../../../core/constant/constant.dart';
@@ -22,20 +23,31 @@ final ProductModel product;
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Text(
+            maxLines: 4,
             product.title,
             style: Styles.regularTextStyle30
                 .copyWith(fontFamily: kGtSectraFine),
           ),
         ),
-        Text(
-          product.description,
-          style: Styles.mediumTextStyle18.copyWith(
-              color: kSubTitlesColor, fontStyle: FontStyle.italic),
+        SizedBox(height: 10.h,),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Text(
+            product.description,
+            style: Styles.mediumTextStyle16.copyWith(
+                color: kSubTitlesColor, fontStyle: FontStyle.italic),
+          ),
         ),
         SizedBox(
           height: 15.h,
         ),
-         ProductRating(rating: product.ratingsAverage.toString(),),
+         Row(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+             Text('Rating: '),
+             ProductRating(rating: product.ratingsAverage.toString(),),
+           ],
+         ),
         SizedBox(height: 15.h),
       ],
     );

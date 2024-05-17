@@ -7,6 +7,11 @@ import 'package:sphere_book/core/utils/server_locator.dart';
 import 'package:sphere_book/features/auth/presentation/view%20models/login_cubit/login_cubit.dart';
 import 'package:sphere_book/features/auth/presentation/view%20models/register_cubit/register_cubit.dart';
 import 'package:sphere_book/features/home/data/repos/home_repo_impl.dart';
+import 'package:sphere_book/features/home/presentation/view%20models/add_product_to_cart/add_product_to_cart_cubit.dart';
+import 'package:sphere_book/features/home/presentation/view%20models/change_count_cubit/change_count_cubit.dart';
+import 'package:sphere_book/features/home/presentation/view%20models/delete_item_from_cart/delete_item_from_cart_cubit.dart';
+import 'package:sphere_book/features/home/presentation/view%20models/get_specific_products_cubit/get_specific_product_cubit.dart';
+import 'package:sphere_book/features/home/presentation/view%20models/get_user_cart/get_user_cart_cubit.dart';
 
 import 'core/constant/constant.dart';
 import 'features/auth/data/repos/auth_repo_impl.dart';
@@ -39,10 +44,28 @@ class SphereApp extends StatelessWidget {
             BlocProvider(
               create: (context) => RegisterCubit(getIt.get<AuthRepoImpl>()),
             ),
+            BlocProvider(
+              create: (context) => GetUserCartCubit(getIt.get<HomeRepoImpl>()),
+            ),
+            BlocProvider(
+              create: (context) => AddProductToCartCubit(getIt.get<HomeRepoImpl>()),
+            ),
+            BlocProvider(
+              create: (context) => ChangeCountCubit(getIt.get<HomeRepoImpl>()),
+            ),BlocProvider(
+              create: (context) => DeleteItemFromCartCubit(getIt.get<HomeRepoImpl>()),
+            ),
+            BlocProvider(
+              create: (context) => GetSpecificProductCubit(getIt.get<HomeRepoImpl>()),
+            ),
           ],
           child: MaterialApp.router(
             routerConfig: AppRouter.router,
             theme: ThemeData.dark().copyWith(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.deepOrange,
+                brightness: Brightness.dark,
+              ),
               scaffoldBackgroundColor: kBackGroundColor,
               textTheme:
                   GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),

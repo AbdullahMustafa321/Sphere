@@ -19,4 +19,5 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
       emit(GetAllProductsSuccessState(products));
     });
   }
+
 }

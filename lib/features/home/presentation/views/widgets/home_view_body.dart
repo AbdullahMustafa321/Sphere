@@ -49,9 +49,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        const SliverFillRemaining(
-          child: AllProductListView(),
-        )
+        const AllProductListView()
       ],
     );
   }
