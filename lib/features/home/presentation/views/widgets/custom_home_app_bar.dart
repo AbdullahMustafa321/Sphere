@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sphere_book/core/utils/app_router.dart';
 import 'package:sphere_book/core/utils/assets.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/custom_cart_icon.dart';
 

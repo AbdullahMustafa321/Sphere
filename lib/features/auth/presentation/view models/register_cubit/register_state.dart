@@ -11,7 +11,7 @@ final class RegisterFailureState extends RegisterState {
   RegisterFailureState(this.errorMessage);
 }
 final class RegisterSuccessState extends RegisterState {
-  final AuthSuccessModel authSuccessModel;
+  final String successMessage;
 
-  RegisterSuccessState(this.authSuccessModel);
+  RegisterSuccessState(this.successMessage);
 }

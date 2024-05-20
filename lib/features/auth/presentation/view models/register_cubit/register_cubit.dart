@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../data/models/auth_success_model.dart';
 import '../../../data/repos/auth_repo.dart';
 
 part 'register_state.dart';
@@ -27,7 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       phoneNumber: phoneNumber,
     );
     return result.fold((failure) {
-      emit(RegisterFailureState(failure.errMessage));
+      emit(RegisterFailureState(failure));
     }, (success) {
       emit(RegisterSuccessState(success));
     });

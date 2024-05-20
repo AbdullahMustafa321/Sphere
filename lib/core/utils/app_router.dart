@@ -2,10 +2,10 @@ import 'package:go_router/go_router.dart';
 import 'package:sphere_book/features/auth/presentation/views/login_view.dart';
 import 'package:sphere_book/features/auth/presentation/views/signup_view.dart';
 import 'package:sphere_book/features/home/presentation/views/cart_view.dart';
-import 'package:sphere_book/features/home/presentation/views/checkout_view.dart';
 import 'package:sphere_book/features/home/presentation/views/home_view.dart';
-import 'package:sphere_book/features/home/presentation/views/specific_product_view.dart';
 import 'package:sphere_book/features/splash/presentation/views/splash_view.dart';
+
+import '../../features/payment/presentation/views/checkout_view.dart';
 
 abstract class AppRouter {
   static String kHomeView='/HomeView';

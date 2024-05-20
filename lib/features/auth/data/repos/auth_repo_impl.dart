@@ -13,7 +13,7 @@ class AuthRepoImpl implements AuthRepo{
 
 
   @override
-  Future<Either<Failure, AuthSuccessModel>> userRegister({required String email,
+  Future<Either<String, String>> userRegister({required String email,
     required String password,
     required String rePassword,
     required String phoneNumber,
@@ -26,21 +26,15 @@ class AuthRepoImpl implements AuthRepo{
       "phone":phoneNumber
     };
     try {
-      AuthSuccessModel successModel;
-      var response = await apiServices.post(endpoints: 'auth/signup', data: data);
-      successModel=AuthSuccessModel.fromJson(response);
-      return right(successModel);
+      await apiServices.post(endpoints: 'auth/signup', data: data);
+      return right('success');
     } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
-      } else {
-        return left(ServerFailure(e.toString()));
-      }
+      return left('Opss,There was an error,Please try again');
     }
   }
 
   @override
-  Future<Either<Failure, AuthSuccessModel>> userLogin({required String email, required String password})async {
+  Future<Either<String, AuthSuccessModel>> userLogin({required String email, required String password})async {
     Map<String, dynamic> data = {
       'email': email,
       'password': password,
@@ -52,11 +46,7 @@ class AuthRepoImpl implements AuthRepo{
       kToken = successModel.token;
       return right(successModel);
     } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
-      } else {
-        return left(ServerFailure(e.toString()));
-      }
+      return left('Invalid email address or password');
     }
   }
   }

@@ -44,7 +44,7 @@ final ProductModel product;
          Row(
            mainAxisAlignment: MainAxisAlignment.center,
            children: [
-             Text('Rating: '),
+             const Text('Rating: '),
              ProductRating(rating: product.ratingsAverage.toString(),),
            ],
          ),

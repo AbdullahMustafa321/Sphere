@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +17,8 @@ class SignupView extends StatelessWidget {
 
   bool isLoading = false;
 
+  SignupView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -34,9 +35,10 @@ class SignupView extends StatelessWidget {
               GoRouter.of(context).pop();
               isLoading = false;
             } else if (state is RegisterFailureState) {
-              SnackBar(
-                content: Text(state.errorMessage),
-              );
+              ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                  backgroundColor: Colors.red,
+                  content: Text(
+                      state.errorMessage)));
               isLoading = false;
             }
           },
