@@ -7,8 +7,9 @@ import 'package:sphere_book/core/utils/app_router.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/core/widgets/custom_button.dart';
 import 'package:sphere_book/features/home/presentation/view%20models/get_user_cart/get_user_cart_cubit.dart';
-import 'package:sphere_book/features/home/presentation/views/widgets/cart_list_view.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/custom_x_mark_icon.dart';
+
+import 'cart_list_view.dart';
 
 class CartViewBody extends StatefulWidget {
   const CartViewBody({super.key});

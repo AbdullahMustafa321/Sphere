@@ -9,8 +9,8 @@ import 'package:sphere_book/features/home/presentation/views/widgets/custom_icon
 
 import '../../../../../core/constant/constant.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../data/models/cart_model.dart';
-import 'custom_image.dart';
+import '../../../../home/data/models/cart_model.dart';
+import '../../../../home/presentation/views/widgets/custom_image.dart';
 
 class CartListViewItem extends StatelessWidget {
   CartListViewItem({super.key, required this.product});

@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sphere_book/core/utils/assets.dart';
-import 'package:sphere_book/features/home/presentation/views/widgets/custom_cart_icon.dart';
+
+import '../../../../checkout/presentation/views/widgets/custom_cart_icon.dart';
 
 class CustomHomeAppBar extends StatefulWidget {
   const CustomHomeAppBar({super.key});
