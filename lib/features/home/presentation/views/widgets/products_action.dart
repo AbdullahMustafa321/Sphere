@@ -47,7 +47,6 @@ class ProductsAction extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.r),
                       bottomLeft: Radius.circular(20.r)),
-                  textColor: Colors.black,
                   child: Text('${product.price} \$',
                       style:
                           Styles.boldTextStyle18.copyWith(color: Colors.black)),
@@ -63,7 +62,6 @@ class ProductsAction extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20.r),
                       bottomRight: Radius.circular(20.r)),
-                  textColor: Colors.white,
                   fontSize: 16.sp,
                   child: isLoading == false
                       ? Text(

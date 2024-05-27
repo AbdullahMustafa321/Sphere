@@ -24,74 +24,86 @@ class _CartViewBodyState extends State<CartViewBody> {
     BlocProvider.of<GetUserCartCubit>(context).getUserCart(token: kToken);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetUserCartCubit, GetUserCartState>(
       builder: (context, state) {
-        if(state is GetUserCartSuccessState){
-            return SafeArea(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.w, vertical: 6.w),
-                      child:  Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const CustomXMarkIcon(),
-                          RichText(text: TextSpan(children: [
-                            TextSpan(text: 'Total Price: ',style: Styles.boldTextStyle14),
-                            TextSpan(text: '$kTotalPrice ',style: Styles.boldTextStyle16.copyWith(color: Colors.orange)),
-                          ])),
-                          CustomButton(
-                            onPressed: (){
-                              GoRouter.of(context).push(AppRouter.kCheckoutView);
-                            },
-                            backGroundColor: Colors.black,
-                            textColor: Colors.white,
-                            fontSize: 10,
-                            child: const Text('Check Out'),)
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5.h,
-                    ),
-                     Expanded(child: CartListView(products: state.products,))
-                  ],
-                ));
-        }
-        else if (state is GetUserCartFailureState){
-          return  SafeArea(
+        if (state is GetUserCartSuccessState) {
+          return SafeArea(
               child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10.w, vertical: 6.w),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomXMarkIcon(),
-                        CustomButton(
-                          backGroundColor: Colors.black,
-                          textColor: Colors.white,
-                          fontSize: 10,
-                          child: Text('Check Out'),)
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Center(child: Image.asset('assets/images/empty-cart.png'))
-                ],
-              ));
-        }
-        else{
-          return const Center(child: CircularProgressIndicator(),);
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const CustomXMarkIcon(),
+                    RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
+                          text: 'Total Price: ', style: Styles.boldTextStyle14),
+                      TextSpan(
+                          text: '$kTotalPrice ',
+                          style: Styles.boldTextStyle16
+                              .copyWith(color: Colors.orange)),
+                    ])),
+                    CustomButton(
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRouter.kCheckoutView);
+                      },
+                      backGroundColor: Colors.black,
+                      fontSize: 10,
+                      child: const Text('Check Out'),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              state.products.isEmpty
+                  ? Center(child: Image.asset('assets/images/empty-cart.png'))
+                  : Expanded(
+                      child: CartListView(
+                      products: state.products,
+                    ))
+            ],
+          ));
+        } else if (state is GetUserCartFailureState) {
+          return SafeArea(
+              child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const CustomXMarkIcon(),
+                    CustomButton(
+                      backGroundColor: Colors.black,
+                      fontSize: 10,
+                      child: Text(
+                        'Check Out',
+                        style: Styles.boldTextStyle14
+                            .copyWith(color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              Center(child: Image.asset('assets/images/empty-cart.png'))
+            ],
+          ));
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );
   }
-
 }

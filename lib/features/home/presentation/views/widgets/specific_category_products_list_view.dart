@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/product_list_view_item.dart';
-import 'package:sphere_book/features/home/presentation/views/widgets/product_loading_widget.dart';
 
 import '../../../../../core/constant/constant.dart';
 import '../../view models/get_specific_products_cubit/get_specific_product_cubit.dart';
@@ -45,7 +44,7 @@ class _SpecificCategoryProductsListViewState
         } else if (state is GetSpecificProductsFailureState) {
           return Text(state.errorMessage);
         } else {
-          return  const ProductLoadingWidget();
+          return  const Center(child:CircularProgressIndicator(),);
         }
       },
     );
