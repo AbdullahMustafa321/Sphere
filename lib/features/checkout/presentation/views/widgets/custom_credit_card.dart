@@ -18,6 +18,7 @@ class _CustomCreditCardState extends State<CustomCreditCard> {
     return Column(
       children: [
         CreditCardWidget(
+          backgroundImage: 'assets/images/visa_background.jfif',
           isHolderNameVisible: true,
             cardNumber: cardNumber,
             expiryDate: expiryDate,

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/core/widgets/custom_button.dart';
+import 'package:sphere_book/features/checkout/presentation/views/success_pay_view.dart';
 import 'package:sphere_book/features/checkout/presentation/views/widgets/custom_credit_card.dart';
 import 'package:sphere_book/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 import '../../../../home/presentation/views/widgets/custom_x_mark_icon.dart';
@@ -59,6 +60,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                   } else {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SuccessPayView()));
                     autoValidateMode = AutovalidateMode.always;
                     setState(() {
 

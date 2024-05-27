@@ -48,7 +48,11 @@ class _CartViewBodyState extends State<CartViewBody> {
                           style: Styles.boldTextStyle16
                               .copyWith(color: Colors.orange)),
                     ])),
-                    CustomButton(
+                    state.products.isEmpty?const CustomButton(
+                      backGroundColor: Colors.black,
+                      fontSize: 10,
+                      child: Text('Check Out'),
+                    ):CustomButton(
                       onPressed: () {
                         GoRouter.of(context).push(AppRouter.kCheckoutView);
                       },

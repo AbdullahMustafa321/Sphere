@@ -9,6 +9,10 @@ class CustomXMarkIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(onPressed: (){GoRouter.of(context).pop();}, icon: const Icon(FontAwesomeIcons.xmark));
+    return IconButton(
+        onPressed: () {
+          GoRouter.of(context).pop();
+        },
+        icon: const Icon(FontAwesomeIcons.arrowLeft));
   }
 }
