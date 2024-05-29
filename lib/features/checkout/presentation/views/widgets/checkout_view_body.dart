@@ -6,7 +6,6 @@ import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/core/widgets/custom_button.dart';
 import 'package:sphere_book/features/checkout/presentation/views/success_pay_view.dart';
 import 'package:sphere_book/features/checkout/presentation/views/widgets/custom_credit_card.dart';
-import 'package:sphere_book/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 import '../../../../home/presentation/views/widgets/custom_x_mark_icon.dart';
 
 class CheckoutViewBody extends StatefulWidget {
@@ -23,52 +22,44 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.w),
-            child: const Align(
-                alignment: Alignment.topLeft, child: CustomXMarkIcon()),
-          ),
+        child: ListView(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.w),
+          child: const Align(
+              alignment: Alignment.topLeft, child: CustomXMarkIcon()),
         ),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 5.h,
-          ),
+        SizedBox(
+          height: 5.h,
         ),
-        const SliverToBoxAdapter(
-          child: PaymentMethodsListView(),
+        CustomCreditCard(
+          formKey: formKey,
+          autoValidateMode: autoValidateMode,
         ),
-        SliverToBoxAdapter(
-          child: CustomCreditCard(
-            formKey: formKey,
-            autoValidateMode: autoValidateMode,
-          ),
+        SizedBox(
+          height: 20.h,
         ),
-        SliverFillRemaining(
-            hasScrollBody: false,
-            child: Align(
-              child: CustomButton(
-                backGroundColor: Colors.blue,
-                fontSize: 10.sp,
-                child: Text(
-                  'Pay',
-                  style: Styles.boldTextStyle14.copyWith(color: Colors.black),
-                ),
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                  } else {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SuccessPayView()));
-                    autoValidateMode = AutovalidateMode.always;
-                    setState(() {
+        Align(
+          child: CustomButton(
+            backGroundColor: Colors.black,
+            fontSize: 10.sp,
+            child: Text(
+              'Pay',
+              style: Styles.boldTextStyle14,
+            ),
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SuccessPayView()));
+                autoValidateMode = AutovalidateMode.always;
+                setState(() {
 
-                    });
-                  }
-                },
-              ),
-            ))
+                });
+              }
+            },
+          ),
+        )
       ],
     ));
   }

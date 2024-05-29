@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:sphere_book/core/constant/constant.dart';
-import 'package:sphere_book/core/utils/app_router.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/core/widgets/custom_button.dart';
+import 'package:sphere_book/features/checkout/presentation/views/widgets/modal_bottom_sheet_items.dart';
 import 'package:sphere_book/features/home/presentation/view%20models/get_user_cart/get_user_cart_cubit.dart';
 import 'package:sphere_book/features/home/presentation/views/widgets/custom_x_mark_icon.dart';
 
@@ -54,7 +53,13 @@ class _CartViewBodyState extends State<CartViewBody> {
                       child: Text('Check Out'),
                     ):CustomButton(
                       onPressed: () {
-                        GoRouter.of(context).push(AppRouter.kCheckoutView);
+                        showModalBottomSheet(context: context,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.r)
+                            ),
+                            builder: (context){
+                          return const ModalBottomSheetItems();
+                        });
                       },
                       backGroundColor: Colors.black,
                       fontSize: 10,
