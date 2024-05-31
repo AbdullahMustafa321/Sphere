@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/core/widgets/custom_button.dart';
 import 'package:sphere_book/features/checkout/presentation/views/success_pay_view.dart';
-import 'package:sphere_book/features/checkout/presentation/views/widgets/custom_credit_card.dart';
 import '../../../../home/presentation/views/widgets/custom_x_mark_icon.dart';
 
 class CheckoutViewBody extends StatefulWidget {
@@ -32,10 +31,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         SizedBox(
           height: 5.h,
         ),
-        // CustomCreditCard(
-        //   formKey: formKey,
-        //   autoValidateMode: autoValidateMode,
-        // ),
         SizedBox(
           height: 20.h,
         ),

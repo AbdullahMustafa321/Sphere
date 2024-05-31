@@ -13,7 +13,6 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
   final List<String> paymentMethodsItems = const [
     'assets/images/visa.svg',
     'assets/images/PayPal.svg',
-    'assets/images/other.svg'
   ];
 
   int activeIndex = 0;
