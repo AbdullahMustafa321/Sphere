@@ -32,10 +32,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         SizedBox(
           height: 5.h,
         ),
-        CustomCreditCard(
-          formKey: formKey,
-          autoValidateMode: autoValidateMode,
-        ),
+        // CustomCreditCard(
+        //   formKey: formKey,
+        //   autoValidateMode: autoValidateMode,
+        // ),
         SizedBox(
           height: 20.h,
         ),
