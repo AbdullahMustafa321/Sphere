@@ -28,7 +28,7 @@ class ApiServices {
   }
   //--------------------------Stripe-----------------------
   Future<Response> stripePost({required String url, required body, required String token ,String? contentType})async{
-    Response response = await _dio.post('$_baseUrl$url',data: body,options: Options(
+    Response response = await _dio.post(url,data: body,options: Options(
         contentType: contentType,
         headers: {'Authorization':'Bearer $token'}
     ));

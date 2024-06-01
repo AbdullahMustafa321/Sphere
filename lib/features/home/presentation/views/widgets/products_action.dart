@@ -54,6 +54,7 @@ class ProductsAction extends StatelessWidget {
               ),
               Expanded(
                 child: CustomButton(
+                  isLoading: isLoading,
                   height: 40.h,
                   onPressed: () {
                     BlocProvider.of<AddProductToCartCubit>(context).addProductToCart(token:kToken , id: product.id);
@@ -63,13 +64,11 @@ class ProductsAction extends StatelessWidget {
                       topRight: Radius.circular(20.r),
                       bottomRight: Radius.circular(20.r)),
                   fontSize: 16.sp,
-                  child: isLoading == false
-                      ? Text(
+                  child:Text(
                           'Add to Cart',
                           style: Styles.boldTextStyle16
                               .copyWith(color: Colors.white),
                         )
-                      : const Center(child: CircularProgressIndicator()),
                 ),
               ),
             ],

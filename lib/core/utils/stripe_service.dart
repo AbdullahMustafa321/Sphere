@@ -6,27 +6,28 @@ import 'package:sphere_book/features/checkout/data/models/payment_intent_input_m
 import 'package:sphere_book/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 
 class StripeService {
+  final ApiServices apiServices = ApiServices(Dio());
   Future<PaymentIntentModel> createPaymentIntent(
-      PaymentIntentInputModel model) async {
-    final ApiServices apiServices = ApiServices(Dio());
+      PaymentIntentInputModel paymentIntentInputModel) async {
     var response = await apiServices.stripePost(
-      url: 'https://api.stripe.com/v1/payment_intents',
+      body: paymentIntentInputModel.toJson(),
+      contentType: Headers.formUrlEncodedContentType,
       token: ApiKeys.secretKey,
-      body: model.toJson(),
+      url: 'https://api.stripe.com/v1/payment_intents',
     );
     var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
     return paymentIntentModel;
   }
 
   Future initPaymentSheet({required String paymentIntentClientSecret}) async {
-    Stripe.instance.initPaymentSheet(
+    await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
             paymentIntentClientSecret: paymentIntentClientSecret,
             merchantDisplayName: 'Abdullah'));
   }
 
   Future displayPaymentSheet() async {
-    Stripe.instance.presentPaymentSheet();
+    await Stripe.instance.presentPaymentSheet();
   }
 
   Future makePayment({required PaymentIntentInputModel model}) async {

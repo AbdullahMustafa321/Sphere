@@ -4,7 +4,6 @@ import 'package:sphere_book/features/auth/presentation/views/signup_view.dart';
 import 'package:sphere_book/features/checkout/presentation/views/cart_view.dart';
 import 'package:sphere_book/features/home/presentation/views/home_view.dart';
 import 'package:sphere_book/features/splash/presentation/views/splash_view.dart';
-import '../../features/checkout/presentation/views/checkout_view.dart';
 
 abstract class AppRouter {
   static String kHomeView='/HomeView';
@@ -33,10 +32,6 @@ abstract class AppRouter {
       GoRoute(
         path: kCartView,
         builder: (context, state) =>  const CartView(),
-      ),
-      GoRoute(
-        path: kCheckoutView,
-        builder: (context, state) =>   CheckoutView(),
       ),
     ],
   );

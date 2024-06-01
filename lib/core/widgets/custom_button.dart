@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     this.height = 45,
     this.width = 100,
     required this.child,
+    this.isLoading = false,
   });
 
   final void Function()? onPressed;
@@ -21,6 +22,7 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final Widget child;
   final double? width;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,9 @@ class CustomButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: borderRadius ?? BorderRadius.circular(20.r))),
         onPressed: onPressed,
-        child: child,
+        child: isLoading
+            ?  Center(child: SizedBox(height:10.h,width:20.w,child: const CircularProgressIndicator()))
+            : child,
       ),
     );
   }

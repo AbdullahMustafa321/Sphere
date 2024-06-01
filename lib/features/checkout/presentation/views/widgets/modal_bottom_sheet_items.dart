@@ -6,10 +6,10 @@ import 'package:sphere_book/core/widgets/custom_button.dart';
 import 'package:sphere_book/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
 
 import '../../../../../core/utils/app_router.dart';
+import 'custom_button_bloc_consumer.dart';
 
 class ModalBottomSheetItems extends StatelessWidget {
   const ModalBottomSheetItems({super.key});
-
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -20,11 +20,10 @@ class ModalBottomSheetItems extends StatelessWidget {
           SizedBox(height: 20.h,),
           const PaymentMethodsListView(),
           SizedBox(height: 20.h,),
-           CustomButton(onPressed:(){
-             GoRouter.of(context).push(AppRouter.kCheckoutView);
-           },backGroundColor: Colors.black, child: const Text('Continue'))
+           const CustomButtonBlocConsumer()
         ],
       ),
     );
   }
 }
+
