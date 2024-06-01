@@ -4,4 +4,6 @@ import 'package:sphere_book/features/checkout/data/models/payment_intent_input_m
 
 abstract class CheckoutRepo{
   Future<Either<Failure,void>> makePayment({required PaymentIntentInputModel paymentIntentInputModel});
+  Future <Either<Failure,String>> clearCart({required String token});
+
 }

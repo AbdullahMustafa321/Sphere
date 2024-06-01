@@ -21,7 +21,7 @@ class ApiServices {
     Response response = await _dio.put('$_baseUrl$endpoints/$productId',data: data);
     return response.data;
   }
-  Future<Map<String,dynamic>> delete({required String productId,required String endpoints, String token = ''})async{
+  Future<Map<String,dynamic>> delete({ String productId='',required String endpoints, String token = ''})async{
     _dio.options.headers['token']= token;
     Response response = await _dio.delete('$_baseUrl$endpoints/$productId');
     return response.data;

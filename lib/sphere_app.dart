@@ -6,6 +6,8 @@ import 'package:sphere_book/core/utils/app_router.dart';
 import 'package:sphere_book/core/utils/server_locator.dart';
 import 'package:sphere_book/features/auth/presentation/view%20models/login_cubit/login_cubit.dart';
 import 'package:sphere_book/features/auth/presentation/view%20models/register_cubit/register_cubit.dart';
+import 'package:sphere_book/features/checkout/data/repo/checkout_repo_impl.dart';
+import 'package:sphere_book/features/checkout/presentation/view%20models/clear_cart_cubit/clear_cart_cubit.dart';
 import 'package:sphere_book/features/home/data/repos/home_repo_impl.dart';
 import 'package:sphere_book/features/home/presentation/view%20models/add_product_to_cart/add_product_to_cart_cubit.dart';
 import 'package:sphere_book/features/home/presentation/view%20models/change_count_cubit/change_count_cubit.dart';
@@ -48,15 +50,22 @@ class SphereApp extends StatelessWidget {
               create: (context) => GetUserCartCubit(getIt.get<HomeRepoImpl>()),
             ),
             BlocProvider(
-              create: (context) => AddProductToCartCubit(getIt.get<HomeRepoImpl>()),
+              create: (context) =>
+                  AddProductToCartCubit(getIt.get<HomeRepoImpl>()),
             ),
             BlocProvider(
               create: (context) => ChangeCountCubit(getIt.get<HomeRepoImpl>()),
-            ),BlocProvider(
-              create: (context) => DeleteItemFromCartCubit(getIt.get<HomeRepoImpl>()),
             ),
             BlocProvider(
-              create: (context) => GetSpecificProductCubit(getIt.get<HomeRepoImpl>()),
+              create: (context) =>
+                  DeleteItemFromCartCubit(getIt.get<HomeRepoImpl>()),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  GetSpecificProductCubit(getIt.get<HomeRepoImpl>()),
+            ),
+            BlocProvider(
+              create: (context) => ClearCartCubit(CheckoutRepoImpl()),
             ),
           ],
           child: MaterialApp.router(

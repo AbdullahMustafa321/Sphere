@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book/core/constant/constant.dart';
 import 'package:sphere_book/core/utils/styles.dart';
 import 'package:sphere_book/core/widgets/custom_button.dart';
-import 'package:sphere_book/features/checkout/data/repo/checkout_repo.dart';
 import 'package:sphere_book/features/checkout/data/repo/checkout_repo_impl.dart';
 import 'package:sphere_book/features/checkout/presentation/view%20models/stripe_cubit/stripe_cubit.dart';
 import 'package:sphere_book/features/checkout/presentation/views/widgets/modal_bottom_sheet_items.dart';
@@ -66,7 +65,7 @@ class _CartViewBodyState extends State<CartViewBody> {
                                   builder: (context) {
                                     return BlocProvider(
                                       create: (context) => StripeCubit(CheckoutRepoImpl()),
-                                      child: ModalBottomSheetItems(),
+                                      child: const ModalBottomSheetItems(),
                                     );
                                   });
                             },
